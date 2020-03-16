@@ -7,5 +7,5 @@
 <p>{{testo}}</p>
 
 <!-- i due esempi sotto sono equivalenti -->
-<input (input)="testo = $event.target.value" [value]="testo">
+<input (input)="inputEvent($event)" [value]="testo">
 <input [(ngModel)]="testo">

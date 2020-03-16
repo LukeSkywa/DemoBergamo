@@ -20,4 +20,8 @@ export class SecondoComponent implements OnInit {
     ev.stopPropagation();
   }
 
+  inputEvent(ev){
+    this.testo = ev.target.value;
+  }
+
 }
