@@ -1,1 +1,17 @@
-<p>primo works!</p>
+<!-- Da preferire l'interpolazione, a meno che non si ha dell'html nella string -->
+<p>{{title}}</p>
+<p [innerHTML]="title"></p>
+<p>title</p>
+<div>{{htmlString}}</div>
+<div [innerHTML]="htmlString"></div>
+<!-- qui sotto preferire le property -->
+<div>
+    <a href="https://google.it">Link</a>
+</div>
+<div>
+    <a [href]="linkUrl">Link</a>
+</div>
+<div>
+    <a href="{{linkUrl}}">Link</a>
+</div>
+<p>{{titoloInput}} works!</p>
