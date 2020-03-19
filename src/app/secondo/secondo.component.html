@@ -6,18 +6,18 @@
 
 <p>{{testo}}</p>
 
-<!-- i due esempi sotto sono equivalenti -->
-<div>
-    <label> two way binding a mano</label>
-    <input (input)="inputEvent($event)" [value]="testo">
-</div>
 <div>
     <label> one way binding verso l'utente [value]="testo"</label>
     <input [value]="testo">
 </div>
 <div>
-    <label> one way binding verso il codice (input)="inputEvent(this.testo = $event .target.value;)"</label>
+    <label> one way binding verso il codice (input)="testo = $event.target.value"</label>
     <input (input)="inputEvent($event)">
+</div>
+<!-- i due esempi sotto sono equivalenti -->
+<div>
+    <label> two way binding "a mano"</label>
+    <input (input)="testo = $event.target.value" [value]="testo">
 </div>
 <div>
     <label> two way binding con ngModel</label>
