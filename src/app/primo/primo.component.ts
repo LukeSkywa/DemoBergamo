@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { ComunicazioneService } from '../comunicazione.service';
 
 @Component({
   selector: 'app-primo',
@@ -35,7 +36,10 @@ export class PrimoComponent implements OnInit {
     chiave:  'valore'
   };
 
-  constructor() { 
+  constructor(private comunicazioneService: ComunicazioneService) {
+    this.comunicazioneService.messaggio$.subscribe(value=>{
+      console.log('ecco il nuovo messaggio: '+value);
+    }); 
   }
 
   ngOnInit(): void {

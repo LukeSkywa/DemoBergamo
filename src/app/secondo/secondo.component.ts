@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ComunicazioneService } from '../comunicazione.service';
 
 @Component({
   selector: 'app-secondo',
@@ -11,7 +12,9 @@ export class SecondoComponent implements OnInit {
   @Output('clickPulsante')
   myClick: EventEmitter<string> = new EventEmitter();
 
-  constructor() { }
+  constructor(private comunicazioneService: ComunicazioneService) { 
+    
+  }
 
   ngOnInit(): void {
   }
@@ -31,6 +34,7 @@ export class SecondoComponent implements OnInit {
 
   clickNew(value: string){
     console.log(value);
+    this.comunicazioneService.pubblicaNuovoMessaggio(this.testo);
   }
 
 }
