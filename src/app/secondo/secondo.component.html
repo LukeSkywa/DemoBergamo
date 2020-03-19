@@ -7,5 +7,19 @@
 <p>{{testo}}</p>
 
 <!-- i due esempi sotto sono equivalenti -->
-<input (input)="inputEvent($event)" [value]="testo">
-<input [(ngModel)]="testo">
+<div>
+    <label> two way binding a mano</label>
+    <input (input)="inputEvent($event)" [value]="testo">
+</div>
+<div>
+    <label> one way binding verso l'utente [value]="testo"</label>
+    <input [value]="testo">
+</div>
+<div>
+    <label> one way binding verso il codice (input)="inputEvent(this.testo = $event .target.value;)"</label>
+    <input (input)="inputEvent($event)" #>
+</div>
+<div>
+    <label> two way binding con ngModel</label>
+    <input [(ngModel)]="testo">
+</div>
