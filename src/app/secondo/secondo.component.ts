@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class SecondoComponent implements OnInit {
   testo: string = 'Iniziale';
 
-  @Output()
+  @Output('clickPulsante')
   myClick: EventEmitter<string> = new EventEmitter();
 
   constructor() { }

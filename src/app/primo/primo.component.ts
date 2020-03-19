@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-primo',
@@ -24,7 +25,7 @@ export class PrimoComponent implements OnInit {
   htmlString = '<div><p>Prova</p></div>';
   linkUrl = 'https://google.it';
   
-  @Input()
+  @Input('parametroInput')
   titoloInput: string;
 
   myDate: Date = new Date();
