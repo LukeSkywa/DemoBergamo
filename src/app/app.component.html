@@ -1,2 +1,9 @@
-<app-primo [titoloInput]="title"></app-primo>
-<!-- <app-secondo (myClick)="clickAppComponent($event)"></app-secondo> -->
+<button (click)="showComponent()">Cambia componente di prova</button>
+<div [ngSwitch]="componentToShow">
+    <app-primo [titoloInput]="title" *ngSwitchCase="1"></app-primo>
+    <app-secondo (myClick)="clickAppComponent($event)" *ngSwitchCase="2"></app-secondo>
+    <div *ngSwitchDefault>
+        <app-primo [titoloInput]="title"></app-primo>
+        <app-secondo (myClick)="clickAppComponent($event)"></app-secondo>
+    </div>
+</div>
