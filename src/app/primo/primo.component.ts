@@ -6,6 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./primo.component.scss']
 })
 export class PrimoComponent implements OnInit {
+  toggleStyle: boolean = true;
+
+  get myStyles() {
+    return {
+      colorRed: this.toggleStyle,
+      boldStyle: !this.toggleStyle
+    };
+  }
+
   title = 'DemoBergamo';
 
   htmlString = '<div><p>Prova</p></div>';
