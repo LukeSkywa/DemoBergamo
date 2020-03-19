@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-secondo',
@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecondoComponent implements OnInit {
   testo: string = 'Iniziale';
+
+  @Output()
+  myClick: EventEmitter<string> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -14,6 +18,7 @@ export class SecondoComponent implements OnInit {
 
   clickEvent(ev: MouseEvent, param: number){
     if(param === 2){
+      this.myClick.emit(this.testo);
       this.testo = 'Default';
     }
     console.log('ho cliccato il pulsante: '+param);
