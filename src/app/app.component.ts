@@ -27,8 +27,8 @@ export class AppComponent {
     const refDiProva = new CiclovitaComponent(); // codice assolutamente sbagliato e sa non fare
     console.log('ciclovita di prova titolo: '+ refDiProva.title);
     // qui in basso riferimento corretto al componente ciclovita contenuto in app component
-    console.log('ciclovita titolo: '+ this.ciclovitaComponentRef.title);
-    if(this.componentToShow === 3){
+    console.log('ciclovita titolo: '+ this.ciclovitaComponentRef ? this.ciclovitaComponentRef.title : '');
+    if(this.componentToShow === 4){
       this.componentToShow = 1;
     }else{
       this.componentToShow++;

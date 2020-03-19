@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-ciclovita',
   templateUrl: './ciclovita.component.html',
   styleUrls: ['./ciclovita.component.scss']
 })
-export class CiclovitaComponent implements OnInit {
+export class CiclovitaComponent implements OnInit, OnDestroy {
   title: string = 'Titolo';
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor() { 
+    console.log('ngOnInit');
   }
 
-  prendiTitolo(): string{
-    return this.title;
+  ngOnInit(): void {
+    console.log('ngOnInit');
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
   }
 
 }
