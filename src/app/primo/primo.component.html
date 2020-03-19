@@ -1,3 +1,4 @@
+<p *ngFor="let elemento of lista">{{elemento}}</p>
 
 <p [class.colorRed]="toggleStyle" [class.boldStyle]="!toggleStyle">{{titoloInput | lowercase}}</p>
 <p class="boldStyle">{{myDate}}</p>
@@ -7,10 +8,6 @@
 
 <p>{{oggetto?.chiave}} </p>
 <p>{{oggetto1?.chiave}} </p>
-
-<div *ngFor="let pippo of lista">
-    {{pippo}}
-</div>
 <!-- Da preferire l'interpolazione, a meno che non si ha dell'html nella string -->
 <p>{{title}}</p>
 <p [innerHTML]="title"></p>
