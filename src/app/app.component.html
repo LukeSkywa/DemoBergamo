@@ -1,10 +1,2 @@
 <button (click)="showComponent()">Cambia componente di prova</button>
-<div [ngSwitch]="componentToShow">
-    <app-primo [parametroInput]="title" *ngSwitchCase="1" #primoComponent></app-primo>
-    <app-secondo (clickPulsante)="clickAppComponent($event)" *ngSwitchCase="2"></app-secondo>
-    <app-ciclovita  *ngSwitchCase="3"></app-ciclovita>
-    <div *ngSwitchDefault>
-        <app-primo [parametroInput]="title"></app-primo>
-        <app-secondo (clickPulsante)="clickAppComponent($event)"></app-secondo>
-    </div>
-</div>
+<router-outlet></router-outlet>
