@@ -4,11 +4,12 @@ import { PrimoComponent } from './primo/primo.component';
 import { SecondoComponent } from './secondo/secondo.component';
 import { CiclovitaComponent } from './ciclovita/ciclovita.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MyRouteGuardService } from './my-route-guard.service';
 
 const appRoutes: Routes = [
     { path: 'primo', component: PrimoComponent, data: { title: "Primo" } },
     { path: 'primo-diverso', component: PrimoComponent, data: { title: "Primo Diverso" } },
-    { path: 'secondo', component: SecondoComponent },
+    { path: 'secondo', component: SecondoComponent, canActivate: [MyRouteGuardService] },
     { path: 'ciclo-vita', component: CiclovitaComponent },
     { path: '', redirectTo: '/primo', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
