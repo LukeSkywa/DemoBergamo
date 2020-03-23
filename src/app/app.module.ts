@@ -8,6 +8,7 @@ import { SecondoComponent } from './secondo/secondo.component';
 import { CiclovitaComponent } from './ciclovita/ciclovita.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DemoBergamoRoutingModule } from './app-routing.module';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DemoBergamoRoutingModule } from './app-routing.module';
     PrimoComponent,
     SecondoComponent,
     CiclovitaComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
