@@ -9,6 +9,7 @@ import { CiclovitaComponent } from './ciclovita/ciclovita.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DemoBergamoRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MenuComponent } from './menu/menu.component';
     SecondoComponent,
     CiclovitaComponent,
     PageNotFoundComponent,
-    MenuComponent
+    MenuComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
