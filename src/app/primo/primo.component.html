@@ -1,8 +1,18 @@
-<p [appHighlight]="'yellow'">Direttiva applicata</p>
+<p [appHighlight]="color">Direttiva applicata</p>
+
+<p>
+    Il mio colore preferito è il
+    <ng-container *ngIf="color">
+        {{color}}
+    </ng-container>
+</p>
 
 
-
-<p *ngFor="let elemento of lista">{{elemento}}</p>
+<p *ngFor="let elemento of lista" [appHighlight]="'red'">
+    <ng-container *ngIf="elemento !== 'stringa2'">
+        {{elemento}}
+    </ng-container>
+</p>
 
 <p [class.colorRed]="toggleStyle" [class.boldStyle]="!toggleStyle">{{titoloInput | lowercase}}</p>
 <p class="boldStyle">{{myDate}}</p>
@@ -13,7 +23,7 @@
 <p>{{oggetto?.chiave}} </p>
 <p>{{oggetto1?.chiave}} </p>
 <!-- Da preferire l'interpolazione, a meno che non si ha dell'html nella string -->
-<p>{{title}}</p>
+<span>{{title}}</span>
 <p [innerHTML]="title"></p>
 <p>title</p>
 <div>{{htmlString}}</div>
