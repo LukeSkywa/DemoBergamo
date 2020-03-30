@@ -1,14 +1,16 @@
 <p [appHighlight]="color">Direttiva applicata</p>
 
+<p>{{2+3 | exponentialStrength:'3'}}</p>
 <p>
     Il mio colore preferito è il
     <ng-container *ngIf="color != null; else coloreDefault">
-        {{color}}
+        {{color | uppercase}}
     </ng-container>
     <ng-template #coloreDefault>
         green
     </ng-template>
 </p>
+<p>{{color}}</p>
 
 <p *appUnless="color != null">non è indicato il colore</p>
 <button (click)="cambiaColore()">Cambia colore</button>
