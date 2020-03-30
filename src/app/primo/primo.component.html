@@ -2,10 +2,15 @@
 
 <p>
     Il mio colore preferito è il
-    <ng-container *ngIf="color">
+    <ng-container *ngIf="color != null; else coloreDefault">
         {{color}}
     </ng-container>
+    <ng-template #coloreDefault>
+        green
+    </ng-template>
 </p>
+
+<button (click)="cambiaColore()">Cambia colore</button>
 
 
 <p *ngFor="let elemento of lista" [appHighlight]="'red'">
