@@ -1,4 +1,4 @@
-<form [formGroup]="heroForm">
+<form [formGroup]="heroForm" (ngSubmit)="addHero()">
     {{heroForm.value | json}}
     <div>
         <label for="name">Name</label>
@@ -31,5 +31,7 @@
         </div>
     </div>
     <button type="submit" [disabled]="heroForm.status === 'INVALID'">Submit</button>
+    <button (click)="clearHero()">Pulisci</button>
 </form>
 <button (click)="setDefault()"> Metti eroe di default</button>
+<p *ngFor="let hero of heroList">{{hero.name}} - {{hero.power}}</p>

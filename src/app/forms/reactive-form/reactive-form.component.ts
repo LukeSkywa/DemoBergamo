@@ -10,6 +10,7 @@ export class ReactiveFormComponent implements OnInit {
   powers: string[] = ['Super velocità', 'Super forza', 'Indistruttibilità'];
 
   heroForm: FormGroup
+  heroList: { name: string, power: string }[] = [];
 
   get nameControl(): FormControl{
     return this.heroForm.get('name') as FormControl;
@@ -46,6 +47,20 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  addHero(){
+    this.heroList.push({
+      name: this.nameControl.value,
+      power: this.powerControl.value
+    });
+    this.clearHero();
+  }
+
+  clearHero(){
+    this.heroForm.reset({
+      name: 'Gohan'
+    });
   }
 
 }
