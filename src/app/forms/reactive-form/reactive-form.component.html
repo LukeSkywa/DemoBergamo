@@ -1,13 +1,14 @@
 <form [formGroup]="heroForm">
     <div >
       <label for="name">Name</label>
-      <input type="text"  id="name" required formControlName="name">
+      <input type="text"  id="name" formControlName="name">
     </div>
     <div >
       <label for="power">Hero Power</label>
-      <select  id="power" required formControlName="power">
+      <select  id="power" formControlName="power">
          <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
       </select>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit" >Submit</button>
+    <!-- [disabled]="!heroForm.form.valid" -->
 </form>
