@@ -1,0 +1,19 @@
+<form #heroForm="ngForm" (ngSubmit)="aggiungiEroe(); heroForm.reset();">
+    {{heroForm.form.value | json}}
+    <div>
+        <label for="name">Nome</label>
+        <input type="text" id="name" required [(ngModel)]="model.name" name="name" #nameControl="ngModel">
+        <p *ngIf="nameControl.invalid && nameControl.dirty">Campo nome obbligatorio</p>
+    </div>
+    <div>
+        <label for="power">Potere Eroe</label>
+        <select id="power" required [(ngModel)]="model.power" name="power" #powerControl="ngModel">
+            <option value=""></option>
+            <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+        </select>
+        <p *ngIf="powerControl.invalid && powerControl.touched">Campo potere obbligatorio</p>
+    </div>
+    <button type="submit" [disabled]="!heroForm.form.valid">Submit</button>
+    <button (click)="heroForm.reset()">Pulisci</button>
+</form>
+<p *ngFor="let hero of heroList">{{hero.name}} - {{hero.power}}</p>
