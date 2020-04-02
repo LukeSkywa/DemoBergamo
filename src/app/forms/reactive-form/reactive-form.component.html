@@ -1,1 +1,13 @@
-<p>reactive-form works!</p>
+<form [formGroup]="heroForm">
+    <div >
+      <label for="name">Name</label>
+      <input type="text"  id="name" required formControlName="name">
+    </div>
+    <div >
+      <label for="power">Hero Power</label>
+      <select  id="power" required formControlName="power">
+         <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+</form>

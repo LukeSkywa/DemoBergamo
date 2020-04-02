@@ -6,6 +6,7 @@ import { CiclovitaComponent } from './ciclovita/ciclovita.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MyRouteGuardService } from './my-route-guard.service';
 import { TemplateFormComponent } from './forms/template-form/template-form.component';
+import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 
 const appRoutes: Routes = [
     { path: 'primo', component: PrimoComponent, data: { title: "Primo" } },
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
     { path: 'secondo', component: SecondoComponent, canActivate: [MyRouteGuardService] },
     { path: 'ciclo-vita', component: CiclovitaComponent },
     { path: 'template-form', component: TemplateFormComponent },
+    { path: 'reactive-form', component: ReactiveFormComponent },
     { path: '', redirectTo: '/primo', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
