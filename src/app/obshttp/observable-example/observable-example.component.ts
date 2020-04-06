@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, of, from, interval, Subscription } from 'rxjs';
-import { filter, first, distinct } from 'rxjs/operators';
+import { Observable, of, from, interval, Subscription, timer } from 'rxjs';
+import { filter, first, distinct, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-observable-example',
@@ -8,13 +8,20 @@ import { filter, first, distinct } from 'rxjs/operators';
   styleUrls: ['./observable-example.component.scss']
 })
 export class ObservableExampleComponent implements OnInit, OnDestroy {
-  mysubs: Subscription;
   constructor() { }
 
   ngOnInit(): void {
-    // this.mysubs = interval(1000).subscribe(n =>
-    //   // console.log(`It's been ${n} seconds since subscribing!`)
-    // );
+    
+
+    timer(2000).subscribe(() =>{
+      console.log('Timer');
+    });
+
+    interval(1000).pipe(
+      takeUntil(timer(5000))
+    ).subscribe(n =>
+      console.log(`It's been ${n} seconds since subscribing!`)
+    );
 
     // esempio filter
     of(5,8,6).pipe(
@@ -56,10 +63,9 @@ export class ObservableExampleComponent implements OnInit, OnDestroy {
       distinct()
     ).subscribe(value=>{
       console.log('VALUE - distinct: '+value);
-    })
+    });
   }
 
   ngOnDestroy(): void {
-    this.mysubs.unsubscribe();
   }
 }
