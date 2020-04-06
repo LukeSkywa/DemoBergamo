@@ -7,6 +7,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MyRouteGuardService } from './my-route-guard.service';
 import { TemplateFormComponent } from './forms/template-form/template-form.component';
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
+import { Observable } from 'rxjs';
+import { ObservableExampleComponent } from './obshttp/observable-example/observable-example.component';
 
 const appRoutes: Routes = [
     { path: 'primo', component: PrimoComponent, data: { title: "Primo" } },
@@ -15,6 +17,7 @@ const appRoutes: Routes = [
     { path: 'ciclo-vita', component: CiclovitaComponent },
     { path: 'template-form', component: TemplateFormComponent },
     { path: 'reactive-form', component: ReactiveFormComponent },
+    { path: 'observable', component: ObservableExampleComponent },
     { path: '', redirectTo: '/primo', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
