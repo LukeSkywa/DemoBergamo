@@ -1,31 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of, from } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, of, from, interval, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-observable-example',
   templateUrl: './observable-example.component.html',
   styleUrls: ['./observable-example.component.scss']
 })
-export class ObservableExampleComponent implements OnInit {
-
+export class ObservableExampleComponent implements OnInit, OnDestroy {
+  mysubs: Subscription;
   constructor() { }
 
   ngOnInit(): void {
-    const obs$ = new Observable()
+    this.mysubs = interval(1000).subscribe(n =>
+      console.log(`It's been ${n} seconds since subscribing!`)
+    );
 
-    from([1,2,3]);
-
-    of('pippo', 'pluto', 'topolino').subscribe(value =>{
-      console.log('next: '+value);
-      // si gestisce il valore e il nuovo evento
-    }, error=>{
-      console.log('error: '+error);
-      // qui gestisco quando l'observable va in errore
-    }, ()=>{
-      console.log('complete');
-      // gestisco qui quando l'observable viene completato
-    });
-    console.log()
+    of(5,8,6).pipe(
+      filter(value=>{
+        return true;
+      })
+    ).subscribe(value=>{
+      console.log('VALUE: '+value);
+    })
   }
 
+  ngOnDestroy(): void {
+    this.mysubs.unsubscribe();
+  }
 }
