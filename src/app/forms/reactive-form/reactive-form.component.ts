@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -26,6 +26,7 @@ export class ReactiveFormComponent implements OnInit {
       name: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       power: ['', Validators.required],
       birthDate: [date.toISOString().substring(0, 10)],
+      rating: 2,
       address: this.fb.group({
         street: '',
         city: '',
@@ -62,8 +63,9 @@ export class ReactiveFormComponent implements OnInit {
 
   clearHero(){
     this.heroForm.reset({
-      name: 'Gohan'
+      name: 'Gohan',
     });
+    this.heroForm.get('rating').patchValue(1);
   }
 
 }

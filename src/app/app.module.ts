@@ -11,6 +11,7 @@ import { DemoBergamoRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
 import { TemplateFormComponent } from './forms/template-form/template-form.component';
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
+import { RatingComponent } from './forms/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.compo
     PageNotFoundComponent,
     MenuComponent,
     TemplateFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
