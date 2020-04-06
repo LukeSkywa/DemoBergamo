@@ -21,9 +21,11 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder) {
+    const date = new Date(2019, 6,15);
     this.heroForm = this.fb.group({
       name: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       power: ['', Validators.required],
+      birthDate: [date.toISOString().substring(0, 10)],
       address: this.fb.group({
         street: '',
         city: '',
@@ -31,6 +33,7 @@ export class ReactiveFormComponent implements OnInit {
         zip: ['', Validators.compose([Validators.minLength(5),Validators.maxLength(5)])]
       })
     });
+    
   }
 
   setDefault() {

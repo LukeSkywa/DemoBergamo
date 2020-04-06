@@ -12,6 +12,10 @@
         </select>
         <p *ngIf="powerControl.status === 'INVALID' && powerControl.dirty">Campo potere obbligatorio</p>
     </div>
+    <div>
+        <label for="birthDate">Data di nascità</label>
+        <input type="date" id="birthDate" formControlName="birthDate">
+    </div>
     <div formGroupName="address">
         <div>
             <label for="street">Via</label>
