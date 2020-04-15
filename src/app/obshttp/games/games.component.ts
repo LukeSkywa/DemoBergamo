@@ -46,4 +46,10 @@ export class GamesComponent implements OnInit {
     });
   }
 
+  removeGame(id: number){
+    this.myHttpService.deleteGame(id).subscribe(()=>{
+      this.retrieveGames();
+    });
+  }
+
 }

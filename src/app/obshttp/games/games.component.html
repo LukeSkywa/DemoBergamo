@@ -10,6 +10,7 @@
 <div *ngFor="let game of gameList">
     <span>{{game.name}}</span>
     <button (click)="showDetail(game.id)">Dettaglio</button>
+    <button (click)="removeGame(game.id)">Elimina</button>
 </div> 
 
 <div *ngIf="gameSelected">

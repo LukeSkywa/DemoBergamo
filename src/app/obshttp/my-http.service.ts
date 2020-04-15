@@ -26,6 +26,10 @@ export class MyHttpService {
     return this.httpClient.get<GameItem>('http://localhost:3000/games/' + id);
   }
 
+  deleteGame(id: number){
+    return this.httpClient.delete('http://localhost:3000/games/'+id)
+  }
+
   getGamesErr(): Observable<any> {
     return this.httpClient.get('http://localhost:3000/gaes');
   }
