@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MyHttpService } from '../my-http.service';
 import { GameItem } from '../model/game-item.interface';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -39,7 +39,14 @@ export class GamesComponent implements OnInit {
     });
   }
 
+  obsList: Observable<GameItem[]>;
+
   retrieveGames(){
+    this.obsList = this.myHttpService.getGames(this.selectedAuthor).pipe(
+      map(response =>{
+        return response.body;
+      })
+    );
     this.myHttpService.getGames(this.selectedAuthor).subscribe(reponse => {
       this.gameList = reponse.body;
     }, err => {
