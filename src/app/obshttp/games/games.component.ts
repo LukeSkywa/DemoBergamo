@@ -3,6 +3,7 @@ import { MyHttpService } from '../my-http.service';
 import { GameItem } from '../model/game-item.interface';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-games',
@@ -15,8 +16,14 @@ export class GamesComponent implements OnInit {
   otherGameList: GameItem[] = [];
   gameSelected: GameItem;
   selectedAuthor: string;
+  gameForm: FormGroup;
 
-  constructor(private myHttpService: MyHttpService) { }
+  constructor(private myHttpService: MyHttpService, private fb: FormBuilder) { 
+    this.gameForm = this.fb.group({
+      name: ['', Validators.required],
+      author: ['', Validators.required]
+    })
+  }
 
   ngOnInit(): void {
     this.retrieveGames();
@@ -48,6 +55,12 @@ export class GamesComponent implements OnInit {
 
   removeGame(id: number){
     this.myHttpService.deleteGame(id).subscribe(()=>{
+      this.retrieveGames();
+    });
+  }
+
+  addGame(){
+    this.myHttpService.postGame(this.gameForm.value).subscribe(()=>{
       this.retrieveGames();
     });
   }

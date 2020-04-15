@@ -33,4 +33,8 @@ export class MyHttpService {
   getGamesErr(): Observable<any> {
     return this.httpClient.get('http://localhost:3000/gaes');
   }
+
+  postGame(game: GameItem){
+    return this.httpClient.post('http://localhost:3000/games', game);
+  }
 }

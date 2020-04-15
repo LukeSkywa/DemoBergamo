@@ -1,5 +1,17 @@
 <p *ngFor="let game of otherGameList">{{game.name}}</p> 
 
+<form [formGroup]="gameForm" (ngSubmit)="addGame()">
+    <div>
+        <label for="name">Nome</label>
+        <input id="name" formControlName="name">
+    </div>
+    <div>
+        <label for="author">Autore</label>
+        <input id="author" formControlName="author">
+    </div>
+    <button type="submit" [disabled]="gameForm.status=== 'INVALID'">Inserisci Gioco</button>
+</form>
+
 <select [(ngModel)]="selectedAuthor" (change)="retrieveGames()">
     <option value=''>Tutti</option>
     <option value='EA'>EA</option>
