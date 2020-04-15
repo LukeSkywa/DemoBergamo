@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MyHttpService } from '../my-http.service';
 import { GameItem } from '../model/game-item.interface';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-games',
@@ -10,18 +12,23 @@ import { GameItem } from '../model/game-item.interface';
 export class GamesComponent implements OnInit {
 
   gameList: GameItem[] = [];
+  otherGameList: GameItem[] = [];
 
   constructor(private myHttpService: MyHttpService) { }
 
   ngOnInit(): void {
     this.myHttpService.getGames().subscribe(reponse => {
-      this.gameList = reponse;
+      this.gameList = reponse.body;
     }, err => {
       console.log('error');
     });
     
-    this.myHttpService.getGamesErr().subscribe(reponse => {
-      this.gameList = reponse;
+    this.myHttpService.getGamesErr().pipe(
+      catchError(err =>{
+        return of([]);
+      })
+    ).subscribe(reponse => {
+      this.otherGameList = reponse;
     }, err => {
       console.log('error');
     });
