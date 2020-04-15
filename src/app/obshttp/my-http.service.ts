@@ -37,4 +37,8 @@ export class MyHttpService {
   postGame(game: GameItem){
     return this.httpClient.post('http://localhost:3000/games', game);
   }
+
+  updateGame(game: GameItem){
+    return this.httpClient.put('http://localhost:3000/games/'+game.id, game);
+  }
 }

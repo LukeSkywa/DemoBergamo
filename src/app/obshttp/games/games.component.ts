@@ -65,4 +65,10 @@ export class GamesComponent implements OnInit {
     });
   }
 
+  editGame(){
+    this.myHttpService.updateGame(this.gameSelected).subscribe(()=>{
+      this.retrieveGames();
+    });
+  }
+
 }
