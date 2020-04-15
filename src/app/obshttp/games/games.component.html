@@ -1,2 +1,19 @@
-<p *ngFor="let game of gameList">{{game.name}}</p> 
 <p *ngFor="let game of otherGameList">{{game.name}}</p> 
+
+<select [(ngModel)]="selectedAuthor" (change)="retrieveGames()">
+    <option value=''>Tutti</option>
+    <option value='EA'>EA</option>
+    <option value='Eidos'>Eidos</option>
+    <option value='Bungie'>Bungie</option>
+</select>
+
+<div *ngFor="let game of gameList">
+    <span>{{game.name}}</span>
+    <button (click)="showDetail(game.id)">Dettaglio</button>
+</div> 
+
+<div *ngIf="gameSelected">
+    <h1>Dettaglio</h1>
+    <p>Nome: {{gameSelected.name}}</p>
+    <p>Autore: {{gameSelected.author}}</p>
+</div>

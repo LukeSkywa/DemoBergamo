@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GameItem } from './model/game-item.interface';
 
@@ -10,15 +10,23 @@ export class MyHttpService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getGames(): Observable<HttpResponse<GameItem[]>>{
+  getGames(author?: string): Observable<HttpResponse<GameItem[]>> {
     let httpHeader: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     httpHeader = httpHeader.set('Response-Type', 'application/json');
-    return this.httpClient.get<GameItem[]>('http://localhost:3000/games', { observe: 'response', headers: httpHeader});
+    let params: HttpParams;
+    if (author != null && author !== '') {
+      params = new HttpParams().set('author', author);
+    }
+    return this.httpClient.get<GameItem[]>('http://localhost:3000/games', { observe: 'response', headers: httpHeader, params: params });
   }
 
-  getGamesErr(): Observable<any>{
+  getGame(id: number): Observable<GameItem> {
+    return this.httpClient.get<GameItem>('http://localhost:3000/games/' + id);
+  }
+
+  getGamesErr(): Observable<any> {
     return this.httpClient.get('http://localhost:3000/gaes');
   }
 }

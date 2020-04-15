@@ -13,24 +13,36 @@ export class GamesComponent implements OnInit {
 
   gameList: GameItem[] = [];
   otherGameList: GameItem[] = [];
+  gameSelected: GameItem;
+  selectedAuthor: string;
 
   constructor(private myHttpService: MyHttpService) { }
 
   ngOnInit(): void {
-    this.myHttpService.getGames().subscribe(reponse => {
-      this.gameList = reponse.body;
-    }, err => {
-      console.log('error');
-    });
-    
+    this.retrieveGames();
+
     this.myHttpService.getGamesErr().pipe(
-      catchError(err =>{
+      catchError(err => {
         return of([]);
       })
     ).subscribe(reponse => {
       this.otherGameList = reponse;
     }, err => {
       console.log('error');
+    });
+  }
+
+  retrieveGames(){
+    this.myHttpService.getGames(this.selectedAuthor).subscribe(reponse => {
+      this.gameList = reponse.body;
+    }, err => {
+      console.log('error');
+    });
+  }
+
+  showDetail(id: number) {
+    this.myHttpService.getGame(id).subscribe(response => {
+      this.gameSelected = response;
     });
   }
 
