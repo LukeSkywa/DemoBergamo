@@ -9,6 +9,7 @@ import { TemplateFormComponent } from './forms/template-form/template-form.compo
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 import { Observable } from 'rxjs';
 import { ObservableExampleComponent } from './obshttp/observable-example/observable-example.component';
+import { GamesComponent } from './obshttp/games/games.component';
 
 const appRoutes: Routes = [
     { path: 'primo', component: PrimoComponent, data: { title: "Primo" } },
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     { path: 'template-form', component: TemplateFormComponent },
     { path: 'reactive-form', component: ReactiveFormComponent },
     { path: 'observable', component: ObservableExampleComponent },
+    { path: 'games', component: GamesComponent },
     { path: '', redirectTo: '/primo', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];

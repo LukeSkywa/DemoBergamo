@@ -13,6 +13,8 @@ import { TemplateFormComponent } from './forms/template-form/template-form.compo
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 import { RatingComponent } from './forms/rating/rating.component';
 import { ObservableExampleComponent } from './obshttp/observable-example/observable-example.component';
+import { GamesComponent } from './obshttp/games/games.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,13 +27,15 @@ import { ObservableExampleComponent } from './obshttp/observable-example/observa
     TemplateFormComponent,
     ReactiveFormComponent,
     RatingComponent,
-    ObservableExampleComponent
+    ObservableExampleComponent,
+    GamesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    DemoBergamoRoutingModule
+    DemoBergamoRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
