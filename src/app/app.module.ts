@@ -14,7 +14,8 @@ import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.compo
 import { RatingComponent } from './forms/rating/rating.component';
 import { ObservableExampleComponent } from './obshttp/observable-example/observable-example.component';
 import { GamesComponent } from './obshttp/games/games.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NoopInterceptorService } from './obshttp/noop-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import { HttpClientModule } from '@angular/common/http';
     DemoBergamoRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

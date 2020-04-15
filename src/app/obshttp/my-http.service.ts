@@ -11,15 +11,11 @@ export class MyHttpService {
   constructor(private httpClient: HttpClient) { }
 
   getGames(author?: string): Observable<HttpResponse<GameItem[]>> {
-    let httpHeader: HttpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    httpHeader = httpHeader.set('Response-Type', 'application/json');
     let params: HttpParams;
     if (author != null && author !== '') {
       params = new HttpParams().set('author', author);
     }
-    return this.httpClient.get<GameItem[]>('http://localhost:3000/games', { observe: 'response', headers: httpHeader, params: params });
+    return this.httpClient.get<GameItem[]>('http://localhost:3000/games', { observe: 'response', params: params });
   }
 
   getGame(id: number): Observable<GameItem> {
