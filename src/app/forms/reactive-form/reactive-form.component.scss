@@ -1,3 +1,33 @@
 .ng-invalid.ng-dirty:not(form) {
     border: 1px solid red;
 }
+
+// .form-control-box{
+//     margin-left: 10px;
+// }
+// .form-control-box>span{
+//     color:red;
+// }
+// .form-control-box>label{
+//     color: gray;
+// }
+
+// .form-control-box.background-color{
+//     background-color: cyan;
+// }
+
+.form-control-box {
+    margin-left: 10px;
+
+    &.background-color{
+        background-color: cyan;
+    }
+
+    >span {
+        color:red;
+    }
+
+    >label{
+        color: gray;
+    }
+}
