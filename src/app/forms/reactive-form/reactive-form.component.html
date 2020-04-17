@@ -1,6 +1,9 @@
 <form [formGroup]="heroForm" (ngSubmit)="addHero()">
     {{heroForm.value | json}}
     <div>
+        <span class="material-icons">
+            music_video
+            </span>
         <label for="name">Name</label>
         <input type="text" id="name" formControlName="name">
         <p *ngIf="nameControl.status === 'INVALID' && nameControl.dirty">Campo nome obbligatorio</p>
