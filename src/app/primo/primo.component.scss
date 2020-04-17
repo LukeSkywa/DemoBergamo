@@ -1,7 +1,12 @@
+@import '../../assets/scss/variables';
 .colorRed{
-    color: red;
+    color: $textColor;
 }
 
 .boldStyle{
     font-weight: bold;
+}
+
+p{
+    color: $textColor
 }

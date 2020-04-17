@@ -1,3 +1,5 @@
+@import '../../../assets/scss/variables';
+
 .ng-invalid.ng-dirty:not(form) {
     border: 1px solid red;
 }
@@ -24,7 +26,7 @@
     }
 
     >span {
-        color:red;
+        color: $textColor;
     }
 
     >label{
