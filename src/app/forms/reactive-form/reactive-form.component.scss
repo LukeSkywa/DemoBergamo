@@ -1,7 +1,12 @@
 @import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixin';
 
 .ng-invalid.ng-dirty:not(form) {
     border: 1px solid red;
+}
+
+input{
+    @include border-radius(5px);
 }
 
 // .form-control-box{
